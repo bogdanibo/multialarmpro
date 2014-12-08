@@ -38,6 +38,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		$(document).ready(function() {
+			initApp();
 			// Se creaza folderul AnwarSubhiQasem
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
 
@@ -2085,17 +2086,17 @@ var app = {
      }
 };
 
-function onDocLoad() 
-{
-	if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) 
-	{
-		document.addEventListener('deviceready', initApp, false);
-	} 
-	else 
-	{
-		initApp();
-	}
-}
+// function onDocLoad() 
+// {
+	// if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) 
+	// {
+		// document.addEventListener('deviceready', initApp, false);
+	// } 
+	// else 
+	// {
+		// initApp();
+	// }
+// }
 function initApp() 
 {
 	initAd();

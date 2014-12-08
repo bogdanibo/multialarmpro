@@ -2105,8 +2105,8 @@ function initApp()
 }
 function initAd()
 {
-	if ( window.plugins && window.plugins.AdMob ) 
-	{
+	// if ( window.plugins && window.plugins.AdMob ) 
+	// {
 		var ad_units = {
 		// ios : {
 		// banner: 'ca-app-pub-6869992474017983/4806197152',
@@ -2145,11 +2145,11 @@ function initAd()
 			autoShow: true // auto show interstitial ad when loaded
 		});
 		registerAdEvents();
-	}
-	else 
-	{
-		alert( 'admob plugin not ready' );
-	}
+	// }
+	// else 
+	// {
+		// alert( 'admob plugin not ready' );
+	// }
 }
 // optional, in case respond to events
 function registerAdEvents() 

@@ -1464,7 +1464,7 @@ var app = {
 			function formatTime(unix) {
 					//console.log(unix);
 				var current_date = new Date( parseFloat(unix) );
-				alert(current_date);
+				//alert(current_date);
 					//console.log ( current_date );
 				var weekdays = getWeekdays(); 
 				var months = getMonths();
@@ -2148,7 +2148,7 @@ function initAd()
 	}
 	else 
 	{
-		alert( 'admob plugin not ready' );
+		//alert( 'admob plugin not ready' );
 	}
 }
 // optional, in case respond to events

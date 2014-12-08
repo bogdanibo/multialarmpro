@@ -39,37 +39,39 @@ var app = {
     receivedEvent: function(id) {
 		$(document).ready(function() {
 			// Se creaza folderul AnwarSubhiQasem
-			// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-// 
-			// function onRequestFileSystemSuccess(fileSystem) { 
-					// var entry=fileSystem.root; 
-					// entry.getDirectory("AnwarSubhiQasem", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
-			// } 
-// 			
-			// window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-			// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
-// 			
-			// function gotFS(fileSystem) {
-			  // console.log("entered gotFS: " + fileSystem.root.getDirectory);
-			// }
-// 			
-			// function onGetDirectorySuccess(dir) { 
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+
+			function onRequestFileSystemSuccess(fileSystem) { 
+					var entry=fileSystem.root; 
+					entry.getDirectory("AnwarSubhiQasem", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+			} 
+			
+			window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
+			
+			function gotFS(fileSystem) {
+			  console.log("entered gotFS: " + fileSystem.root.getDirectory);
+			}
+			
+			function onGetDirectorySuccess(dir) { 
 				  // console.log("Created dir "+dir.name); 
 				  // console.log("Created path "); 
-			// } 
-// 			
-			// function onGetDirectoryFail(error) { 
-				 // console.log("Error creating directory "+error.code); 
-			// }
-			// console.log(' ===> acesta este dir');
-// 			
-// 			
-			// // Se copiaza directorul alarms -> AnwarSubhiQasem
-			// // Aici a fost folosit un plugin pentru asta care se numeste asset2sd
-			// asset2sd.copyDir({
-				// asset_directory: "www/alarms",
-				// destination_directory: "AnwarSubhiQasem"
-			// });
+				  
+				  asset2sd.copyDir({ 
+						asset_directory: "www/alarms",
+						destination_directory: dir.fullPath
+					});
+			} 
+			
+			function onGetDirectoryFail(error) { 
+				 console.log("Error creating directory "+error.code); 
+			}
+			console.log(' ===> acesta este dir');
+			
+			
+			// Se copiaza directorul alarms -> AnwarSubhiQasem
+			// Aici a fost folosit un plugin pentru asta care se numeste asset2sd
+			
 						
 			//setez variabilele care vor fi folosite 
 			localStorage.setItem("deleteReminderOn"					, false	);

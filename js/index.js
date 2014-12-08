@@ -272,7 +272,7 @@ var app = {
 				};
 				
 				datePicker.show(options, function(date){
-				  alert("date result " + date);  
+				  //alert("date result " + date);  
 				});
 				window.plugin.notification.local.getScheduledIds(function (scheduledIds) {
 					//console.log('Scheduled IDs: ' + scheduledIds.join(' ,'));
@@ -415,7 +415,7 @@ var app = {
 			{
 				if(localStorage.getItem("deleteReminderOn"))
 					$(this).parent().find(".reminder-delete").hide();
-				else
+				//else
 					//console.log("Du-ma la editare bai programatorule!");
 			});
 			
@@ -459,14 +459,20 @@ var app = {
 						function(tx, results){ });
 				});
 				
-				window.plugin.notification.local.cancel(id, function(){//console.log("am sters ca nebunu'")}, scope);	
+				window.plugin.notification.local.cancel(id, function(){}, scope);	
 			}); 
 			
 			
 			$("#superReminderMelody").on("click",function()
 			{
 				var sound 	 = $("#superReminderMelody input:radio:checked").val(); 
-				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){//console.log("playAudio():Audio Success");},function(err){//console.log("playAudio():Audio Error: " + err);});
+				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){
+						//console.log("playAudio():Audio Success");
+					},
+					function(err)
+					{
+						//console.log("playAudio():Audio Error: " + err);
+					});
 			      
 			     my_media.play(); 
 			});
@@ -474,7 +480,14 @@ var app = {
 			$("#superReminderPreAlarmMelody").on("click",function()
 			{
 				var sound 	 = $("#superReminderPreAlarmMelody input:radio:checked").val(); 
-				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){//console.log("playAudio():Audio Success");},function(err){//console.log("playAudio():Audio Error: " + err);});
+				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function()
+									{
+										//console.log("playAudio():Audio Success");
+									},
+									function(err)
+									{
+										//console.log("playAudio():Audio Error: " + err);
+									});
 			      
 			     my_media.play();  
 			});
@@ -774,7 +787,7 @@ var app = {
 			{
 				if(localStorage.getItem("deleteReminderOn"))
 					$(this).parent().find(".reminder-delete").hide();
-				else
+				//else
 					//console.log("Du-ma la editare bai programatorule!");
 			});
 			
@@ -855,7 +868,7 @@ var app = {
 							
 							for (var i = 0; i < result.rows.length; i++) 
 							{
-								alert("am ajuns aici"); 
+								//alert("am ajuns aici"); 
 								var row = result.rows.item(i);
 								saveSuperReminderMessage(row.ReminderMessage); // In loc de field ar trebui pus rows.NUMECOLOANA
 								saveSuperReminderTime(moment().format('MMMM Do YYYY') + " " + moment().format('h:mm:ss a')); // In loc de field ar trebui pus rows.NUMECOLOANA
@@ -1366,7 +1379,7 @@ var app = {
 			}
 			
 			function errorCB(tx, err) {
-				alert("Error processing SQL: " + err.message); 
+				//alert("Error processing SQL: " + err.message); 
 			}
 			
 			// Transaction success callback

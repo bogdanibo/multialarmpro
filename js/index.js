@@ -51,12 +51,12 @@ var app = {
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
 			
 			function gotFS(fileSystem) {
-			  console.log("entered gotFS: " + fileSystem.root.getDirectory);
+			  //console.log("entered gotFS: " + fileSystem.root.getDirectory);
 			}
 			
 			function onGetDirectorySuccess(dir) { 
-				  // console.log("Created dir "+dir.name); 
-				  // console.log("Created path "); 
+				  // //console.log("Created dir "+dir.name); 
+				  // //console.log("Created path "); 
 				  
 				  asset2sd.copyDir({ 
 						asset_directory: "www/alarms",
@@ -65,9 +65,9 @@ var app = {
 			} 
 			
 			function onGetDirectoryFail(error) { 
-				 console.log("Error creating directory "+error.code); 
+				 //console.log("Error creating directory "+error.code); 
 			}
-			console.log(' ===> acesta este dir');
+			//console.log(' ===> acesta este dir');
 			
 			
 			// Se copiaza directorul alarms -> AnwarSubhiQasem
@@ -275,7 +275,7 @@ var app = {
 				  alert("date result " + date);  
 				});
 				window.plugin.notification.local.getScheduledIds(function (scheduledIds) {
-					console.log('Scheduled IDs: ' + scheduledIds.join(' ,'));
+					//console.log('Scheduled IDs: ' + scheduledIds.join(' ,'));
 				});	
 			});
 
@@ -416,20 +416,20 @@ var app = {
 				if(localStorage.getItem("deleteReminderOn"))
 					$(this).parent().find(".reminder-delete").hide();
 				else
-					console.log("Du-ma la editare bai programatorule!");
+					//console.log("Du-ma la editare bai programatorule!");
 			});
 			
 			function updateActiveState(state,id)
 			{
 				window.plugin.notification.local.getScheduledIds(function (scheduledIds) {
-					console.log('Scheduled IDs: ' + scheduledIds.join(' ,'));
+					//console.log('Scheduled IDs: ' + scheduledIds.join(' ,'));
 				});
 				db.transaction(function(transaction)  
 				{  
 					transaction.executeSql('UPDATE Alarms SET Active=(?) WHERE Id=(?)', [state,id], successCB,errorCB) 
 				});
-				console.log("state: " + state);
-				console.log("id:    " + id	 );
+				//console.log("state: " + state);
+				//console.log("id:    " + id	 );
 			}
 			
 						
@@ -446,7 +446,7 @@ var app = {
 				date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
 				
 				return date.getTime(); //1379426880000
-				//console.log(date); //Tue Sep 17 2013 10:08:00 GMT-0400
+				////console.log(date); //Tue Sep 17 2013 10:08:00 GMT-0400
 			}
 			
 			
@@ -459,14 +459,14 @@ var app = {
 						function(tx, results){ });
 				});
 				
-				window.plugin.notification.local.cancel(id, function(){console.log("am sters ca nebunu'")}, scope);	
+				window.plugin.notification.local.cancel(id, function(){//console.log("am sters ca nebunu'")}, scope);	
 			}); 
 			
 			
 			$("#superReminderMelody").on("click",function()
 			{
 				var sound 	 = $("#superReminderMelody input:radio:checked").val(); 
-				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){console.log("playAudio():Audio Success");},function(err){console.log("playAudio():Audio Error: " + err);});
+				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){//console.log("playAudio():Audio Success");},function(err){//console.log("playAudio():Audio Error: " + err);});
 			      
 			     my_media.play(); 
 			});
@@ -474,7 +474,7 @@ var app = {
 			$("#superReminderPreAlarmMelody").on("click",function()
 			{
 				var sound 	 = $("#superReminderPreAlarmMelody input:radio:checked").val(); 
-				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){console.log("playAudio():Audio Success");},function(err){console.log("playAudio():Audio Error: " + err);});
+				var my_media = new Media("/android_asset/www/alarms/"+ sound +".mp3",function(){//console.log("playAudio():Audio Success");},function(err){//console.log("playAudio():Audio Error: " + err);});
 			      
 			     my_media.play();  
 			});
@@ -484,37 +484,37 @@ var app = {
 					/*
 					transaction.executeSql('SELECT * FROM Settings;', [],
 						function(transaction, result) {
-							console.log(result);
+							//console.log(result);
 							if (result != null && result.rows != null) 
 							{
 								for (var i = 0; i < result.rows.length; i++) 
 								{
-									console.log('Id =' + Id );
-									console.log('ReminderSnoozeNag =' + ReminderSnoozeNag );
-									console.log('ReminderRelentlessNag =' + ReminderRelentlessNag );
-									console.log('ReminderDuetime =' + ReminderDuetime );
-									console.log('ReminderQuickPickerHour =' + ReminderQuickPickerHour );
-									console.log('ReminderQuickPickerMinute =' + ReminderQuickPickerMinute );
+									//console.log('Id =' + Id );
+									//console.log('ReminderSnoozeNag =' + ReminderSnoozeNag );
+									//console.log('ReminderRelentlessNag =' + ReminderRelentlessNag );
+									//console.log('ReminderDuetime =' + ReminderDuetime );
+									//console.log('ReminderQuickPickerHour =' + ReminderQuickPickerHour );
+									//console.log('ReminderQuickPickerMinute =' + ReminderQuickPickerMinute );
 									
-									console.log('ReminderAutoViewNotesFromAlert =' + ReminderAutoViewNotesFromAlert );
-									console.log('ReminderLongPressToViewNotes =' + ReminderLongPressToViewNotes );
-									console.log('ReminderCompletedAutoTrim =' + ReminderCompletedAutoTrim );
-									console.log('ReminderMelody =' + ReminderMelody );
-									console.log('ReminderPreMelody =' + ReminderPreMelody );
-									console.log('ReminderTimerPickerInterval =' + ReminderTimerPickerInterval );
-									console.log('QuickReminderMelody =' + QuickReminderMelody );
-									console.log('QuickReminderTimerPickerInterval =' + QuickReminderTimerPickerInterval );
-									console.log('TimersMelody =' + TimersMelody );
+									//console.log('ReminderAutoViewNotesFromAlert =' + ReminderAutoViewNotesFromAlert );
+									//console.log('ReminderLongPressToViewNotes =' + ReminderLongPressToViewNotes );
+									//console.log('ReminderCompletedAutoTrim =' + ReminderCompletedAutoTrim );
+									//console.log('ReminderMelody =' + ReminderMelody );
+									//console.log('ReminderPreMelody =' + ReminderPreMelody );
+									//console.log('ReminderTimerPickerInterval =' + ReminderTimerPickerInterval );
+									//console.log('QuickReminderMelody =' + QuickReminderMelody );
+									//console.log('QuickReminderTimerPickerInterval =' + QuickReminderTimerPickerInterval );
+									//console.log('TimersMelody =' + TimersMelody );
 									
-									console.log('TimersDisableAutoLock =' + TimersDisableAutoLock );
-									console.log('AppIconBadge =' + AppIconBadge );
-									console.log('PauseAllAlarms =' + PauseAllAlarms );
-									console.log('RemindersAlertsState =' + RemindersAlertsState );
-									console.log('RemindersSoundsState =' + RemindersSoundsState );
-									console.log('RemindersNagMeState =' + RemindersNagMeState );
-									console.log('TimersAlertsState =' + TimersAlertsState );
-									console.log('TimersSoundsState =' + TimersSoundsState );
-									console.log('TimersNagMeState =' + TimersNagMeState );
+									//console.log('TimersDisableAutoLock =' + TimersDisableAutoLock );
+									//console.log('AppIconBadge =' + AppIconBadge );
+									//console.log('PauseAllAlarms =' + PauseAllAlarms );
+									//console.log('RemindersAlertsState =' + RemindersAlertsState );
+									//console.log('RemindersSoundsState =' + RemindersSoundsState );
+									//console.log('RemindersNagMeState =' + RemindersNagMeState );
+									//console.log('TimersAlertsState =' + TimersAlertsState );
+									//console.log('TimersSoundsState =' + TimersSoundsState );
+									//console.log('TimersNagMeState =' + TimersNagMeState );
 									
 									saveSuperReminderMessage("Reminder");
 									saveSuperReminderTime(moment().format('MMMM Do YYYY') + " " + moment().format('h:mm:ss a'));
@@ -775,7 +775,7 @@ var app = {
 				if(localStorage.getItem("deleteReminderOn"))
 					$(this).parent().find(".reminder-delete").hide();
 				else
-					console.log("Du-ma la editare bai programatorule!");
+					//console.log("Du-ma la editare bai programatorule!");
 			});
 			
 			db.transaction(function(transaction) {
@@ -1040,10 +1040,10 @@ var app = {
 					{	
 						var acum = getCurrentTimeUTC();
 						var diferenta = Math.abs(acum - endDate);
-						// console.log("Data sfarsit:" + moment(endDate).format("YYYY-MM-DD HH:mm:ss"));
-					    // console.log("Data acum : " + moment(getCurrentTimeUTC()).format("YYYY-MM-DD HH:mm:ss"));
-					    // console.log("Diferenta in milli:" + diferenta);
-					    // console.log("Diferenta: " + returnPrettyType(diferenta,""));
+						// //console.log("Data sfarsit:" + moment(endDate).format("YYYY-MM-DD HH:mm:ss"));
+					    // //console.log("Data acum : " + moment(getCurrentTimeUTC()).format("YYYY-MM-DD HH:mm:ss"));
+					    // //console.log("Diferenta in milli:" + diferenta);
+					    // //console.log("Diferenta: " + returnPrettyType(diferenta,""));
 						var remainingTime = returnPrettyType(diferenta,"");
 						 
 						if(diferenta > 1000) 
@@ -1132,7 +1132,7 @@ var app = {
 			    return tmLoc.getTime() + tmLoc.getTimezoneOffset() * 60000;
 			}
 			
-			//console.log("Data UTC: " + getCurrentTimeUTC());
+			////console.log("Data UTC: " + getCurrentTimeUTC());
 			
 			//functie pentru depauzare timer
 			$("#showTimersBox").on("click",".play-button",function()
@@ -1348,7 +1348,7 @@ var app = {
 				});
 				
 				$(this).parent().remove();
-				//console.log("Au mai ramas: " + $(".timer-container").length);
+				////console.log("Au mai ramas: " + $(".timer-container").length);
 				if($(".timer-container").length == 0)
 					goCancelEditTimer(); 
 			});
@@ -1372,7 +1372,7 @@ var app = {
 			// Transaction success callback
 			//
 			function successCB(suc) {
-				console.log("success!");
+				//console.log("success!");
 			}
 	
 			
@@ -1414,7 +1414,7 @@ var app = {
 		    
 		    function replaceTimerTime(result)
 		    {
-		    	console.log(result);
+		    	//console.log(result);
 		    }
 		    
 		    function returnPrettyType(time,extra)
@@ -1462,10 +1462,10 @@ var app = {
 			}
 			
 			function formatTime(unix) {
-					console.log(unix);
+					//console.log(unix);
 				var current_date = new Date( parseFloat(unix) );
 				alert(current_date);
-					console.log ( current_date );
+					//console.log ( current_date );
 				var weekdays = getWeekdays(); 
 				var months = getMonths();
 				

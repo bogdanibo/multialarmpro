@@ -39,37 +39,37 @@ var app = {
     receivedEvent: function(id) {
 		$(document).ready(function() {
 			// Se creaza folderul AnwarSubhiQasem
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-
-			function onRequestFileSystemSuccess(fileSystem) { 
-					var entry=fileSystem.root; 
-					entry.getDirectory("AnwarSubhiQasem", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
-			} 
-			
-			window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
-			
-			function gotFS(fileSystem) {
-			  console.log("entered gotFS: " + fileSystem.root.getDirectory);
-			}
-			
-			function onGetDirectorySuccess(dir) { 
-				  console.log("Created dir "+dir.name); 
-				  console.log("Created path "); 
-			} 
-			
-			function onGetDirectoryFail(error) { 
-				 console.log("Error creating directory "+error.code); 
-			}
-			console.log(' ===> acesta este dir');
-			
-			
-			// Se copiaza directorul alarms -> AnwarSubhiQasem
-			// Aici a fost folosit un plugin pentru asta care se numeste asset2sd
-			asset2sd.copyDir({
-				asset_directory: "www/alarms",
-				destination_directory: "AnwarSubhiQasem"
-			});
+			// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+// 
+			// function onRequestFileSystemSuccess(fileSystem) { 
+					// var entry=fileSystem.root; 
+					// entry.getDirectory("AnwarSubhiQasem", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+			// } 
+// 			
+			// window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+			// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
+// 			
+			// function gotFS(fileSystem) {
+			  // console.log("entered gotFS: " + fileSystem.root.getDirectory);
+			// }
+// 			
+			// function onGetDirectorySuccess(dir) { 
+				  // console.log("Created dir "+dir.name); 
+				  // console.log("Created path "); 
+			// } 
+// 			
+			// function onGetDirectoryFail(error) { 
+				 // console.log("Error creating directory "+error.code); 
+			// }
+			// console.log(' ===> acesta este dir');
+// 			
+// 			
+			// // Se copiaza directorul alarms -> AnwarSubhiQasem
+			// // Aici a fost folosit un plugin pentru asta care se numeste asset2sd
+			// asset2sd.copyDir({
+				// asset_directory: "www/alarms",
+				// destination_directory: "AnwarSubhiQasem"
+			// });
 						
 			//setez variabilele care vor fi folosite 
 			localStorage.setItem("deleteReminderOn"					, false	);
@@ -151,17 +151,17 @@ var app = {
 					var inserted_id = results.insertId;
 					//alert("Status prealarma : " + preAlarmStatus);
 					
-					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
-					{
-						window.plugin.notification.local.add({
-							id:      inserted_id,
-							title:   title, 
-							message: new_message,
-							repeat:  repeat, 
-							date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
-							sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
-						}); 
-					}, null);
+					// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+					// {
+						// window.plugin.notification.local.add({
+							// id:      inserted_id,
+							// title:   title, 
+							// message: new_message,
+							// repeat:  repeat, 
+							// date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
+							// sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
+						// }); 
+					// }, null);
 					
 					if(preAlarmStatus == "on")
 					{
@@ -204,17 +204,17 @@ var app = {
 						function successCBPreAlarm (transaction,results)
 						{  
 							//alert("am bagat prealarma");
-							window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
-							{
-								window.plugin.notification.local.add({
-									id:      inserted_id,
-									title:   title, 
-									message: new_message,
-									repeat:  repeat, 
-									date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
-									sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
-								}); 
-							}, null);
+							// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+							// {
+								// window.plugin.notification.local.add({
+									// id:      inserted_id,
+									// title:   title, 
+									// message: new_message,
+									// repeat:  repeat, 
+									// date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
+									// sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
+								// }); 
+							// }, null);
 						} 
 					}
 				
@@ -244,18 +244,18 @@ var app = {
 				}); 
 				function SuccessCDB (transaction,results)
 				{ 
-					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-						var inserted_id = results.insertId;
-						
-						window.plugin.notification.local.add({
-							id:      inserted_id,
-							title:   title, 
-							message: new_message,
-							repeat:  repeat, 
-							date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
-							sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
-						}); 
-					}, null);
+					// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+						// var inserted_id = results.insertId;
+// 						
+						// window.plugin.notification.local.add({
+							// id:      inserted_id,
+							// title:   title, 
+							// message: new_message,
+							// repeat:  repeat, 
+							// date:    new Date(parseInt(localStorage.getItem("quickReminderUnixTime"))),   
+							// sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/burglar.mp3'  
+						// }); 
+					// }, null);
 				}
 				populateReminders();
 			});
@@ -923,17 +923,17 @@ var app = {
 				
 				function successInsertTimer(tx,results)
 				{
-					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
-					{
-						window.plugin.notification.local.add({
-							id:      results.insertId + 10456,
-							title:   title, 
-							message: title, 
-							repeat:  repeat,   
-							date:  new Date(parseInt(Date.parse(moment().format("YYYY/MM/DD") + " " + $("#timerHours"	).text() + ":" + $("#timerMinutes").text() + ":" + $("#timerSecundes").text()))),   
-							sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/'+ sound +'.mp3'  
-						}); 
-					}, null);
+					// window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+					// {
+						// window.plugin.notification.local.add({
+							// id:      results.insertId + 10456,
+							// title:   title, 
+							// message: title, 
+							// repeat:  repeat,   
+							// date:  new Date(parseInt(Date.parse(moment().format("YYYY/MM/DD") + " " + $("#timerHours"	).text() + ":" + $("#timerMinutes").text() + ":" + $("#timerSecundes").text()))),   
+							// sound : fileSystem.root.toURL() + 'AnwarSubhiQasem/'+ sound +'.mp3'  
+						// }); 
+					// }, null);
 				}
 			
 				populateTimers(); 

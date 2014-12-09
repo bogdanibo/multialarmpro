@@ -1,7 +1,4 @@
-.ui-footer a
-{
-	width:20%;
-}
+
 
 .on-reminder,.on-timer
 {
@@ -99,6 +96,7 @@
 {
 	display:inline-block;
 	height:100px;
+	width: 60%;
 }
 
 .reminder-date,.timer-date
